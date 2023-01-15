@@ -48,7 +48,7 @@ while ( have_posts() ) :
 			'prev_text' => '<p class="meta-nav">' . $twentytwentyone_prev . $twentytwentyone_previous_label . '</p><p class="post-title">%title</p>',
 		)
 	);
-endwhile; // End of the loop.
+endwhile; // End of the loop..
 
 	?>
 </div>
