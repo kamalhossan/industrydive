@@ -1,2 +1,0 @@
-# industrydive
- Industry Dive Assignment
