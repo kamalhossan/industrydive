@@ -19,13 +19,16 @@ $(function() {
       $.ajax({
         type: 'POST',
         url: '/wp-admin/admin-ajax.php',
-        dataType: 'html',
+        dataType: 'json',
         data: {
-          action: 'weichie_load_more',
+          action: 'industrydive_load_more',
           paged: currentPage,
         },
         success: function (res) {
-          $('.publication-list').append(res);
+          if(currentPage >= res.max) {
+            $('#load-more').hide();
+          }
+          $('.home_latest').append(res.html);
         }
       });
     });

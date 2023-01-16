@@ -2,7 +2,7 @@
 <div class="grid_column">
 <div class="layout" style="background-image:url(<?php echo get_the_post_thumbnail_url(); ?>)">
 				<div class="overlay">
-						<div class="home_hero">
+						<div class="latest_post">
 							<div class="post_meta">
 								<?php the_category('|'); ?>
 							</div>
@@ -16,3 +16,4 @@
 						</div>
 					</div>
 				</div>
+</div>

@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="grid_row layout_one">
 <?php
-		query_posts('post_type=post&category_name=trending-now&post_status=publish&posts_per_page=3&order=ASC&offset=1' . get_query_var('post'));
+		query_posts('post_type=post&category_name=featured&post_status=publish&posts_per_page=3&order=ASC&offset=1' . get_query_var('post'));
 		$counter = 0; 
 		if(have_posts()) :
 		while (have_posts()) : the_post();

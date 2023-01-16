@@ -662,9 +662,10 @@ if ( ! function_exists( 'wp_get_list_item_separator' ) ) :
 endif;
 
 
+/*ajax load functions */
+function industrydive_load_more() {
 
-/* ajax functions */
-function weichie_load_more() {
+	
   $ajaxposts = new WP_Query([
     'post_type' => 'post',
     'posts_per_page' => 3,
@@ -673,18 +674,26 @@ function weichie_load_more() {
   ]);
 
   $response = '';
+  $max_pages = $ajaxposts->max_num_pages;
 
-	
   if($ajaxposts->have_posts()) {
+    ob_start();
     while($ajaxposts->have_posts()) : $ajaxposts->the_post();
-      $response .= get_template_part('template-parts/content/latestajax');
+        $response .= get_template_part('template-parts/content/latestajax');
     endwhile;
+    $output = ob_get_contents();
+    ob_end_clean();
   } else {
     $response = '';
   }
 
-  echo '<div class="latest grid">' . $response . '</div>';
+  $result = [
+    'max' => $max_pages,
+    'html' => $output,
+  ];
+
+  echo json_encode($result);
   exit;
 }
-add_action('wp_ajax_weichie_load_more', 'weichie_load_more');
-add_action('wp_ajax_nopriv_weichie_load_more', 'weichie_load_more');
+add_action('wp_ajax_industrydive_load_more', 'industrydive_load_more');
+add_action('wp_ajax_nopriv_industrydive_load_more', 'industrydive_load_more');

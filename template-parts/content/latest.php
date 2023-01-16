@@ -1,6 +1,7 @@
-<div class="latest grid">
+<div class="latest grid home_latest">
 <?php
-query_posts('post_type=post&post_status=publish&posts_per_page=6&order=DESC&paged=1' . get_query_var('post')
+
+query_posts('post_type=post&post_status=publish&posts_per_page=3&order=DESC&paged=1' . get_query_var('post')
 );
 if(have_posts()) :
 while (have_posts()) : the_post();
@@ -8,7 +9,7 @@ while (have_posts()) : the_post();
 <div class="grid_column">
 <div class="layout" style="background-image:url(<?php echo get_the_post_thumbnail_url(); ?>)">
 				<div class="overlay">
-						<div class="home_hero">
+						<div class="latest_post">
 							<div class="post_meta">
 								<?php the_category('|'); ?>
 							</div>
@@ -29,6 +30,7 @@ endif;
 wp_reset_postdata();
 ?>
 </div>
+
 <div class="btn__wrapper">
-  <a href="#!" class="btn btn__primary" id="load-more">Load more</a>
+  <a href="#!" class=" btn btn__primary" id="load-more">Load more</a>
 </div>
